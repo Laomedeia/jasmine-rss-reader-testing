@@ -9,7 +9,7 @@
 
 ## 如何开始
 
-直接打开`index.html`即可查看阅读器首页并执行jasmine测试脚本。
+直接打开`index.html`即可查看阅读器首页并执行jasmine测试脚本。具体jasmine测试用例见`/jasmine/spec/feedreader.js`文件，可修改用例参数来检测用例或测试数据是否正确，是否符合预期输出。
 
 ## 测试用例
 
