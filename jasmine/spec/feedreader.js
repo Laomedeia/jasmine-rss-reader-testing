@@ -30,9 +30,12 @@ $(function() {
          * 编写一个测试遍历 allFeeds 对象里面的所有的源来保证有链接字段而且链接不是空的。
          */
         it('every feed must has a link url', () => {
+            // 检查 URL 格式是否正确的正规表达式
+            var regularExpressionUrl = /^((ht|f)tps?):\/\/([\w\-]+(\.[\w\-]+)*\/)*[\w\-]+(\.[\w\-]+)*\/?(\?([\w\-\.,@?^=%&:\/~\+#]*)+)?/; 
             for (const feed of allFeeds) {
                 expect(feed.url).toBeDefined();
                 expect(feed.url.length).not.toBe(0);
+                expect(feed.url).toMatch(regularExpressionUrl); // 检查格式
             }
         });
 
@@ -100,14 +103,11 @@ $(function() {
          * 和异步的 done() 函数。
          */
         beforeEach((done) => {
-            loadFeed(0,function() {
-                done();
-            });
+            loadFeed(0,done);
         });
-        it('load feed works', (done) => {
+        it('load feed works', () => {
             // console.log($('.feed .entry'));
             expect($('.feed .entry').length).not.toBe(0);
-            done();
         });
     });
         
@@ -134,11 +134,10 @@ $(function() {
                     done();
                 });
             });
-            it('will change content', (done) => {
+            it('will change content', () => {
                 // console.log(oldContent);
                 // console.log(newContent);
                 expect(oldContent).not.toBe(newContent);
-                done();
             });
         });
     });
